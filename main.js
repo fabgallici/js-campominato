@@ -46,18 +46,18 @@ function createMines(rangeNum) {
 
 // console.log(createMines(100));
 function playMines(minesArr) {
-  var maxPlayerRange = 84;
+  var playerMaxScore = 84;
   var playerScore = 0;
-  var playerNumChoice;
-  var playerNumList = [];
+  var inputNum;
+  var playerData = [];
   mineFound = false;
   var i = 0;
-  while (i <= maxPlayerRange && mineFound === false) {
-    playerNumChoice = parseInt(prompt('Inserisci un numero da 1 a 100 senza ripeterlo!'));
-    if (isIncluded(playerNumChoice, playerNumList) === false) {
-      playerNumList.push(playerNumChoice);
-      console.log('player lista numeri ' + playerNumList);  //stampa lista numeri già inseriti dall'utente
-      if (isIncluded(playerNumChoice, minesArr) === true) {
+  while (i <= playerMaxScore && mineFound === false) {
+    inputNum = parseInt(prompt('Inserisci un numero da 1 a 100 senza ripeterlo!'));
+    if (isIncluded(inputNum, playerData) === false) {
+      playerData.push(inputNum);
+      console.log('player lista numeri ' + playerData);  //stampa lista numeri già inseriti dall'utente
+      if (isIncluded(inputNum, minesArr) === true) {
         mineFound = true;
         alert('Hai preso una mina!');
       } else {

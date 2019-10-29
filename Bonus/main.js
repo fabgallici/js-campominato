@@ -36,19 +36,19 @@ function createMines(rangeNum) {
 }
 
 // riceve ingresso array di 16 numeri random, e max range di numeri 
-function playMines(minesArr, userRange) {
+function playMines(minesArr, numRange) {
   var playerScore = 0;
-  var playerNumChoice;
-  var playerNumList = [];
+  var inputNum;
+  var playerData = [];
   mineFound = false;
-  playerMaxScore = userRange - 16; // max punteggio uguale massimale range numeri meno 16 mine.
+  playerMaxScore = numRange - 16; // max punteggio uguale massimale range numeri meno 16 mine.
   var i = 0;
   while (i <= playerMaxScore && mineFound === false) {
-    playerNumChoice = parseInt(prompt('Inserisci un numero da 1 a ' + userRange + ' senza ripeterlo!'));
-    if (!playerNumList.includes(playerNumChoice) && playerNumChoice >= 1 && playerNumChoice <= userRange) {
-      playerNumList.push(playerNumChoice);
-      console.log('player lista numeri ' + playerNumList);  //debug stampa lista numeri già inseriti dall'utente
-      if (minesArr.includes(playerNumChoice)) {
+    inputNum = parseInt(prompt('Inserisci un numero da 1 a ' + numRange + ' senza ripeterlo!'));
+    if (!playerData.includes(inputNum) && inputNum >= 1 && inputNum <= numRange) {
+      playerData.push(inputNum);
+      console.log('player lista numeri ' + playerData);  //debug stampa lista numeri già inseriti dall'utente
+      if (minesArr.includes(inputNum)) {
         mineFound = true;
         alert('Hai preso una mina! YOU LOSE!');
       } else {
@@ -66,25 +66,25 @@ function playMines(minesArr, userRange) {
 
 
 function playMinesHard() {
-  var userRange;
+  var numRange;
   var playerScoreHard = 0;
   var minesArray = [];
-  var userNumChoice = parseInt(prompt('Scegli la difficoltà: "0" da 1 a 100, "1" da 1 a 80, "2" da 1 a 50'));
-  if (userNumChoice === 0 || userNumChoice === 1 || userNumChoice === 2) {
-    switch (userNumChoice) {
+  var userRangeChoice = parseInt(prompt('Scegli la difficoltà: "0" da 1 a 100, "1" da 1 a 80, "2" da 1 a 50'));
+  if (userRangeChoice === 0 || userRangeChoice === 1 || userRangeChoice === 2) {
+    switch (userRangeChoice) {
       case 0:
-        userRange = 100;
+        numRange = 100;
         break;
       case 1:
-        userRange = 80;
+        numRange = 80;
         break;
       case 2:
-        userRange = 50;
+        numRange = 50;
         break;
     }
-    minesArray = createMines(userRange);
+    minesArray = createMines(numRange);
     console.log('lista mine ' + minesArray); // debug lista 16 mine random
-    playerScoreHard = playMines(minesArray, userRange);
+    playerScoreHard = playMines(minesArray, numRange);
   } else {
     alert('hai Inserito un valore non consentito');
   }
