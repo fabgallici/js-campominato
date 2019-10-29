@@ -1,3 +1,14 @@
+// Il computer deve generare 16 numeri casuali da 1 a 100.
+// In seguito deve chiedere all’utente di inserire un numero da 1 a
+// 100 alla volta, se il numero è presente nella lista dei numeri
+// generati, la partita termina, altrimenti continua chiedendo
+// all’utente un altro numero.
+// La partita termina quando il giocatore inserisce un numero
+// “vietato” o raggiunge il numero massimo possibile di numeri
+// consentiti.
+// Al termine della partita il software deve comunicare il punteggio,
+//   cioè il numero di volte che l’utente ha inserito un numero
+// consentito.
 
 //genera un numero casuale fra 1 e max
 function randomGenerator(max) {
@@ -7,19 +18,18 @@ function randomGenerator(max) {
 }
 
 //ritorna true se numero è incluso nell'array, altrimenti false
-function isIncluded(num, array) {
+function isIncluded(value, array) {
   var i = 0;
   var found = false;
   while (i < array.length && !found) {
-    if (num === array[i]) {
+    if (value === array[i]) {
       found = true;
     }
     i++
-  };
+  }
   return found;
 }
-// var prova = [1,2,3,4,5,6,7,8];
-// console.log(isIncluded(8, prova));
+
 
 //crea un array da 1 a rangeNum con 16 numeri non ripetuti
 function createMines(rangeNum) {
@@ -46,16 +56,14 @@ function playMines(minesArr) {
     playerNumChoice = parseInt(prompt('Inserisci un numero da 1 a 100 senza ripeterlo!'));
     if (isIncluded(playerNumChoice, playerNumList) === false) {
       playerNumList.push(playerNumChoice);
-      console.log('player lista numeri ' + playerNumList);
+      console.log('player lista numeri ' + playerNumList);  //stampa lista numeri già inseriti dall'utente
       if (isIncluded(playerNumChoice, minesArr) === true) {
         mineFound = true;
         alert('Hai preso una mina!');
       } else {
         playerScore++;
-        alert('Numero valido, non hai preso una mina, continua il gioco');       
+        alert('Numero Valido, non hai preso una mina, continua il gioco');       
       }
-
-
     } else {
       alert('hai ripetuto l\'inserimento dello stesso numero, inserisci un numero diverso');
     }
@@ -65,13 +73,6 @@ function playMines(minesArr) {
 }
 
 var myMines = createMines(100);
-console.log('lista mine ' + myMines);
+console.log('lista mine ' + myMines);   // stampa lista numeri "vietati"
 var myGame = playMines(myMines);
 console.log('hai totalizzato ' + myGame);
-
-// var prova = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-// var myGame = playMines(myMines);
-
-
-// var myGame = playMines(prova);
-// console.log(myGame);
