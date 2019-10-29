@@ -66,7 +66,8 @@ function playMines(minesArr, userRange) {
 
 
 function playMinesHard() {
-  var userRange, playerScoreHard;
+  var userRange;
+  var playerScoreHard = 0;
   var minesArray = [];
   var userNumChoice = parseInt(prompt('Scegli la difficoltà: "0" da 1 a 100, "1" da 1 a 80, "2" da 1 a 50'));
   if (userNumChoice === 0 || userNumChoice === 1 || userNumChoice === 2) {
