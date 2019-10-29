@@ -58,7 +58,6 @@ function playMines(minesArr) {
 
     } else {
       alert('hai ripetuto l\'inserimento dello stesso numero, la partita termina quà');
-      break;
     }
     i++;
   }
