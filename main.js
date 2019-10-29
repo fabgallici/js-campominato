@@ -64,10 +64,11 @@ function playMines(minesArr) {
         playerScore++;
         alert('Numero Valido, non hai preso una mina, continua il gioco');       
       }
+      i++;
     } else {
       alert('hai ripetuto l\'inserimento dello stesso numero, inserisci un numero diverso');
     }
-    i++;
+    
   }
   return playerScore;
 }

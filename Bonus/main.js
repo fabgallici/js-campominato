@@ -55,10 +55,11 @@ function playMines(minesArr, userRange) {
         playerScore++;
         alert('Numero Valido, Non hai preso una mina, continua il gioco');       
       }
+      i++;
     } else {
       alert('hai reinserito lo stesso numero, oppure un numero fuori dal range consentito, Ripeti l\'inserimento');
     }
-    i++;
+    
   }
   return playerScore;
 }
