@@ -10,26 +10,17 @@
 //   cioè il numero di volte che l’utente ha inserito un numero
 // consentito.
 
+// BONUS: all’inizio il software richiede anche una difficoltà
+// all’utente che cambia il range di numeri casuali.
+// Con difficoltà 0=> da 1 a 100, con difficoltà 1 => da 1 a 80 con
+// difficoltà 2=> da 1 a 50
+
 //genera un numero casuale fra 1 e max
 function randomGenerator(max) {
   var intNUm = Math.floor(Math.random() * max) + 1;
   // console.log(intNUm);
   return intNUm;
 }
-
-//ritorna true se numero è incluso nell'array, altrimenti false
-function isIncluded(value, array) {
-  var i = 0;
-  var found = false;
-  while (i < array.length && !found) {
-    if (value === array[i]) {
-      found = true;
-    }
-    i++
-  }
-  return found;
-}
-
 
 //crea un array da 1 a rangeNum con 16 numeri non ripetuti
 function createMines(rangeNum) {
@@ -44,9 +35,8 @@ function createMines(rangeNum) {
   return mines;
 }
 
-// console.log(createMines(100));
+// riceve ingresso array di 16 numeri random, e max range di numeri 
 function playMines(minesArr, userRange) {
-  // var playerMaxScore = 84;
   var playerScore = 0;
   var playerNumChoice;
   var playerNumList = [];
@@ -55,10 +45,10 @@ function playMines(minesArr, userRange) {
   var i = 0;
   while (i <= playerMaxScore && mineFound === false) {
     playerNumChoice = parseInt(prompt('Inserisci un numero da 1 a ' + userRange + ' senza ripeterlo!'));
-    if (isIncluded(playerNumChoice, playerNumList) === false) {
+    if (!playerNumList.includes(playerNumChoice) && playerNumChoice >= 1 && playerNumChoice <= userRange) {
       playerNumList.push(playerNumChoice);
       console.log('player lista numeri ' + playerNumList);  //debug stampa lista numeri già inseriti dall'utente
-      if (isIncluded(playerNumChoice, minesArr) === true) {
+      if (minesArr.includes(playerNumChoice)) {
         mineFound = true;
         alert('Hai preso una mina! YOU LOSE!');
       } else {
@@ -66,7 +56,7 @@ function playMines(minesArr, userRange) {
         alert('Numero Valido, Non hai preso una mina, continua il gioco');       
       }
     } else {
-      alert('hai ripetuto l\'inserimento dello stesso numero, inserisci un numero diverso');
+      alert('hai reinserito lo stesso numero, oppure un numero fuori dal range consentito, Ripeti l\'inserimento');
     }
     i++;
   }
@@ -77,7 +67,7 @@ function playMines(minesArr, userRange) {
 function playMinesHard() {
   var userRange, maxPlayerScore, playerScoreHard;
   var minesArray = [];
-  var userNumChoice = parseInt(prompt('Scegli la difficoltà: "0" da 1 a 100, "1" da 1 a 80, "da" 1 a 50'));
+  var userNumChoice = parseInt(prompt('Scegli la difficoltà: "0" da 1 a 100, "1" da 1 a 80, "2" da 1 a 50'));
   if (userNumChoice === 0 || userNumChoice === 1 || userNumChoice === 2) {
     switch (userNumChoice) {
       case 0:
