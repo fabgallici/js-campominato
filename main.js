@@ -21,3 +21,17 @@ function isIncluded(num, array) {
 
 // var prova = [1,2,3,4,5,6,7,8];
 // console.log(isIncluded(8, prova));
+
+function createMines(rangeNum) {
+  var mines = [];
+  var rndMine;
+  while (mines.length < 16) {
+    rndMine = randomGenerator(rangeNum);
+    if (isIncluded(rndMine, mines) === false) {
+      mines.push(rndMine);
+    }
+  }
+  return mines;
+}
+
+// console.log(createMines(100));
