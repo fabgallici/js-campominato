@@ -46,6 +46,7 @@ function playMines(minesArr) {
     playerNumChoice = parseInt(prompt('Inserisci un numero da 1 a 100 senza ripeterlo!'));
     if (isIncluded(playerNumChoice, playerNumList) === false) {
       playerNumList.push(playerNumChoice);
+      console.log('player lista numeri ' + playerNumList);
       if (isIncluded(playerNumChoice, minesArr) === true) {
         mineFound = true;
         alert('Hai preso una mina!');
@@ -64,13 +65,14 @@ function playMines(minesArr) {
   return playerScore;
 }
 
-// var myMines = createMines(100);
-// console.log(myMines);
+var myMines = createMines(100);
+console.log('lista mine ' + myMines);
+var myGame = playMines(myMines);
+console.log('hai totalizzato ' + myGame);
 
-
-var prova = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+// var prova = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 // var myGame = playMines(myMines);
 
 
-var myGame = playMines(prova);
-console.log(myGame);
+// var myGame = playMines(prova);
+// console.log(myGame);
